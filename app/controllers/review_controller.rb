@@ -13,4 +13,14 @@ class ReviewsController < ApplicationController
   @review.restaurant = @restaurant
 
   if @review.save
-    redirect_to restaurant_path
+    redirect_to restaurant_path(@restaurant)
+  else
+    render :new
+  end
+end
+
+def review_params
+
+  params.require(:review).permit(:content, :rating)
+end
+end
